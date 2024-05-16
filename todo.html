@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="add">
+   
+    <button onclick="addTodo()" id="botn">click to add</button>
+    <div class="addeditem">
+
+    </div>
+
+    <script>
+            const todoArray=[]
+        function addTodo() {
+          
+          
+           
+       
+            const inputvalue=document.getElementById("add").value;
+           if(inputvalue!==""){
+          
+           todoArray.push(inputvalue)
+       var destination=document.querySelector('.addeditem')
+           var newdiv=document.createElement('div')
+            newdiv.textContent=inputvalue
+            destination.appendChild(newdiv)
+            console.log(todoArray)
+            newdiv.addEventListener('click',function(){
+                deleteitem(this)
+            })
+            document.getElementById("add").value='';
+           }
+           else{
+            alert("add something")
+           }
+        
+        
+           
+        }
+        function deleteitem(item){
+            const index= todoArray.indexOf(item.textContent)
+            if(index!==-1){
+                todoArray.splice(index,1)
+                item.remove()
+                console.log("item deleted")
+            }
+        }
+       
+     
+    </script>
+</body>
+</html>
